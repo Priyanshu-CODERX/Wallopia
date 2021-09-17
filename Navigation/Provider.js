@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import RegisterScreen from '../Screens/Register';
 import LoginScreen from '../Screens/Login';
 import HomeNavigator from '../Screens/HomeNavigator';
-import { TouchableOpacity, Image } from 'react-native';
 
 const stack = createStackNavigator();
 export default function Provider() {

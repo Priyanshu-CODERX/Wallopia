@@ -7,18 +7,43 @@ import {
   Image,
   TouchableOpacity,
   Modal,
-  Alert,
-  Pressable,
-  NativeModules,
+  PermissionsAndroid,
+  Platform,
 } from 'react-native';
 import Constants from 'expo-constants';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as FileSystem from 'expo-file-system';
+import CameraRoll from '@react-native-community/cameraroll';
 
 let ScreenHeight = Dimensions.get('window').height;
 let ScreenWidth = Dimensions.get('window').width;
 
 export default function WallpaperCards({ wallpaperURL, authorName }) {
   const [modalVisible, setModalVisible] = useState(false);
+
+  const hasPermissions = async () => {
+    const permissions = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
+    const hasPermission = await PermissionsAndroid.check(permissions)
+    if (hasPermission) {
+      return true;
+    }
+
+    const status = await PermissionsAndroid.request(permissions);
+    return status === 'granted';
+  }
+
+  const saveImage = async () => {
+    if (Platform.OS === 'android' && !(await hasPermissions())) {
+      return;
+    }
+    FileSystem.downloadAsync(wallpaperURL, FileSystem.documentDirectory + "image" + ".jpg").then(({ uri }) => {
+      console.log(uri)
+      console.log(wallpaperURL)
+      CameraRoll.save(wallpaperURL);
+      alert("Photo Saved!")
+    })
+    // CameraRoll.saveToCameraRoll()
+  }
 
   return (
     <View style={styles.container}>
@@ -54,7 +79,7 @@ export default function WallpaperCards({ wallpaperURL, authorName }) {
                 <Icon name={'close'} size={30} />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => { console.log("Downloading!!!") }}
+                onPress={saveImage}
                 style={[
                   styles.button,
                   {

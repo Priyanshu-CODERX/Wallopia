@@ -4,8 +4,6 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  Image,
-  Button,
   KeyboardAvoidingView,
 } from 'react-native';
 import Constants from 'expo-constants';

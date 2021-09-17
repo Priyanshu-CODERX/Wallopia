@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, Button, Image } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import Constants from 'expo-constants';
 import { auth, db } from '../firebase/firebase';
-import Uploader from './Uploader';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import FlatButton from '../components/FlatButton';
 
 export default function Profile({ navigation }) {

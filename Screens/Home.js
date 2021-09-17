@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
   View,
-  Text,
-  TextInput,
   StyleSheet,
   Button,
-  ScrollView,
   FlatList,
 } from 'react-native';
 import Constants from 'expo-constants';
@@ -36,7 +33,7 @@ export default function Home({ navigation }) {
   // fetchData.bind(params)
 
   useEffect(() => {
-    fetchData();
+    fetchData()
   }, []);
 
   return (

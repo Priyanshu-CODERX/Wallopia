@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import { auth, db } from '../firebase/firebase';
 
@@ -12,13 +12,13 @@ export default function Uploader({ navigation }) {
 
   let dbRef = db.collection('wallpapers');
   const addWallpapers = () => {
-    if(authorName === "" && url === "") {
+    if (authorName === "" && url === "") {
       alert("Please enter the data");
     }
     else {
       dbRef.add({
-          author: authorName,
-          url: url
+        author: authorName,
+        url: url
       })
     }
     setUrl("");

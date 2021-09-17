@@ -1,5 +1,5 @@
 # Wallopia : Wallpapers For Everyone
-### Wallopia is a platform where anyone can share their wallpapers they have. One can save the wallpaper on their phone.
+### A platform for photographer’s where they would be able to upload their clicked stills and connect and follow other talented photographer’s.
 
 ## Technologies Being Used:
 * ### Expo
